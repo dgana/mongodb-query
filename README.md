@@ -1,17 +1,24 @@
 # mongodb-query
 
 1. Membuat Database academic
+```
 use academic;
+```
 
 2. Menampilkan semua collection dan data dalam Database
+```
 show collections;
 db.department.find();
 db.student.find();
+```
 
 3. Membuat atau mengaktifkan Database
+```
 use academic;
+```
 
 4. Membuat collection department
+```
 db.createCollection(department,
   {
     code : "A001",
@@ -19,9 +26,11 @@ db.createCollection(department,
     major : "Javascript"
   }
 );
+```
 
 OR
 
+```
 db.createCollection(department);
 db.department.insert(
   {
@@ -30,8 +39,10 @@ db.department.insert(
     major : "Javascript"
   }
 );
+```
 
 5. Membuat collection student
+```
 db.createCollection(student,
   {
     studentId : "1801403324",
@@ -45,9 +56,11 @@ db.createCollection(student,
     }
   }
 );
+```
 
 OR
 
+```
 db.createCollection(student);
 db.student.insert(
   {
@@ -62,12 +75,16 @@ db.student.insert(
     }
   }
 );
+```
 
 6. Melihat struktur collection student
+```
 var students = db.student.findOne();
 for (var key in students) { print (key) ; }
+```
 
 7. Menginputkan 5 data ke dalam collection department
+```
 let bulk = db.department.initializeUnorderedBulkOp();
 
 bulk.insert( { code: "A002", name: "Blanford Fox 2016", major: "Angular JS" } );
@@ -77,8 +94,10 @@ bulk.insert( { code: "A005", name: "Ethiopian Fox 2017", major: "Mongo DB" } );
 bulk.insert( { code: "A006", name: "Fat Fox 2017", major: "Postgres" } );
 
 bulk.execute();
+```
 
 8. Menginputkan 3 data ke dalam collection student beserta reference ke department
+```
 db.student.insertMany(
   [
     {
@@ -116,23 +135,36 @@ db.student.insertMany(
     }
   ]
 );
+```
 
 9. Melihat collection student
+```
 db.student.find();
+```
 
 10. Menampilkan key name dan address dalam collection student
+```
 db.student.find({}, {name:1, address:1});
+```
 
 11. Menampilkan key StudentId, name, dan address dari data student yang mempunyai studentId tertentu
+```
 db.student.find({studentId:"1801403324"}, {studentId:1, name:1, address:1});
+```
 
 12. Menampilkan semua data student secara urut berdasarkan name dengan sort() secara ascending maupun descending
+```
 db.student.find().sort({name:1});
 db.student.find().sort({name:-1});
+```
 
 13. Menampilkan semua data department secara urut berdasarkan name dengan sort() secara ascending maupun descending
+```
 db.department.find().sort({name:1});
 db.department.find().sort({name:-1});
+```
 
 14. Mencari data student dengan name
+```
 db.student.find({}, {name:1});
+```
