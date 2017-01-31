@@ -124,6 +124,15 @@ db.student.find();
 db.student.find({}, {name:1, address:1});
 
 11. Menampilkan key StudentId, name, dan address dari data student yang mempunyai studentId tertentu
-db.student.find({}, {where:{studentId:"1801403324"} name:1, address:1}});
+db.student.find({studentId:"1801403324"}, {studentId:1, name:1, address:1});
+
+12. Menampilkan semua data student secara urut berdasarkan name dengan sort() secara ascending maupun descending
+db.student.find().sort({name:1});
+db.student.find().sort({name:-1});
+
+13. Menampilkan semua data department secara urut berdasarkan name dengan sort() secara ascending maupun descending
+db.department.find().sort({name:1});
+db.department.find().sort({name:-1});
 
 14. Mencari data student dengan name
+db.student.find({}, {name:1});
